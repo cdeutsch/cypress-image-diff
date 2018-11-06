@@ -102,7 +102,7 @@ export function matchImageSnapshotPlugin({ path: screenshotPath }) {
   }
 
   fs.copySync(snapshotKebabPath, snapshotDotPath);
-  fs.removeSync(snapshotKebabPath);
+  // fs.removeSync(snapshotKebabPath);
   snapshotResults.diffOutputPath = snapshotDotPath;
 
   return {

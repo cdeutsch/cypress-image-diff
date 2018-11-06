@@ -59,7 +59,7 @@ describe('command', () => {
     ).resolves.not.toThrow();
   });
 
-  it('should fail', () => {
+  it('should not fail', () => {
     global.cy.task = jest.fn().mockResolvedValue({
       pass: false,
       added: false,
@@ -71,7 +71,7 @@ describe('command', () => {
 
     expect(
       boundMatchImageSnapshot(subject, commandOptions)
-    ).rejects.toThrowErrorMatchingSnapshot();
+    ).resolves.not.toThrow();
   });
 
   it('should add command', () => {

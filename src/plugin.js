@@ -92,6 +92,10 @@ export function matchImageSnapshotPlugin({ path: screenshotPath }) {
     fs.removeSync(snapshotKebabPath);
     snapshotResults.diffOutputPath = diffDotPath;
 
+    console.log(
+      `Screenshot was different from saved snapshot.\n  See diff for details: ${snapshotResults.diffOutputPath}`
+    );
+
     return {
       path: diffDotPath,
     };

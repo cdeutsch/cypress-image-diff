@@ -27,25 +27,7 @@ export function matchImageSnapshotCommand(defaultOptions) {
     const target = subject ? cy.wrap(subject) : cy;
     target.screenshot(name, options);
 
-    return cy
-      .task(RECORD)
-      .then(
-        ({
-          pass,
-          added,
-          updated,
-          diffRatio,
-          diffPixelCount,
-          diffOutputPath,
-        }) => {
-          if (!pass && !added && !updated) {
-            const differencePercentage = diffRatio * 100;
-            throw new Error(
-              `Screenshot was ${differencePercentage}% different from saved snapshot with ${diffPixelCount} different pixels.\n  See diff for details: ${diffOutputPath}`
-            );
-          }
-        }
-      );
+    return cy.task(RECORD);
   };
 }
 

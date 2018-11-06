@@ -13,7 +13,7 @@ import { MATCH, RECORD } from './constants';
 let snapshotOptions = {};
 let snapshotResults = {};
 let snapshotRunning = false;
-const kebabSnap = '-snap.png';
+const kebabSnap = '-new-snap.png';
 const dotSnap = '.snap.png';
 const dotDiff = '.diff.png';
 
@@ -89,7 +89,7 @@ export function matchImageSnapshotPlugin({ path: screenshotPath }) {
   if (!pass && !added && !updated) {
     fs.copySync(diffOutputPath, diffDotPath);
     fs.removeSync(diffOutputPath);
-    fs.removeSync(snapshotKebabPath);
+    // fs.removeSync(snapshotKebabPath);
     snapshotResults.diffOutputPath = diffDotPath;
 
     console.log(

@@ -1,12 +1,12 @@
-# Cypress Image Snapshot
+# Cypress Image Diff
 
-Cypress Image Snapshot binds [jest-image-snapshot](https://github.com/americanexpress/jest-image-snapshot)'s image diffing logic to [Cypress.io](https://cypress.io) commands. **The goal is to catch visual regressions during integration tests.** Here's what it looks like when tests run with the Cypress GUI.
+Cypress Image Diff binds [jest-image-snapshot](https://github.com/americanexpress/jest-image-snapshot)'s image diffing logic to [Cypress.io](https://cypress.io) commands. **The goal is to catch visual regressions during integration tests.** Here's what it looks like when tests run with the Cypress GUI.
 
-<img width="500px" src="https://user-images.githubusercontent.com/4060187/41942389-5a6705ae-796d-11e8-8003-fadbf7ccf43d.gif" alt="Cypress Image Snapshot in action"/>
+<img width="500px" src="https://user-images.githubusercontent.com/4060187/41942389-5a6705ae-796d-11e8-8003-fadbf7ccf43d.gif" alt="Cypress Image Diff in action"/>
 
 This then constructs/uploads an image diff for analysis.
 
-<img width="500px" src="https://user-images.githubusercontent.com/4060187/41942163-72c8c20a-796c-11e8-9149-c295341864d3.png" alt="Cypress Image Snapshot Diff"/>
+<img width="500px" src="https://user-images.githubusercontent.com/4060187/41942163-72c8c20a-796c-11e8-9149-c295341864d3.png" alt="Cypress Image Diff Diff"/>
 
 Boom! Turns out you probably can't delete that intern's CSS from 6 months ago that somehow made its way to prod. :see_no_evil:
 
@@ -15,7 +15,7 @@ Boom! Turns out you probably can't delete that intern's CSS from 6 months ago th
 Install from npm
 
 ```bash
-npm install --save-dev cypress-image-snapshot
+npm install --save-dev cypress-image-diff
 ```
 
 then add the following in your project's `<rootDir>/cypress/plugins/index.js`:
@@ -23,7 +23,7 @@ then add the following in your project's `<rootDir>/cypress/plugins/index.js`:
 ```js
 const {
   addMatchImageSnapshotPlugin,
-} = require('cypress-image-snapshot/plugin');
+} = require('cypress-image-diff/plugin');
 
 module.exports = on => {
   addMatchImageSnapshotPlugin(on);
@@ -33,7 +33,7 @@ module.exports = on => {
 and in `<rootDir>/cypress/support/commands.js` add:
 
 ```js
-import { addMatchImageSnapshotCommand } from 'cypress-image-snapshot/command';
+import { addMatchImageSnapshotCommand } from 'cypress-image-diff/command';
 
 addMatchImageSnapshotCommand(options);
 ```

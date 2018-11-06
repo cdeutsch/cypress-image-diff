@@ -13,7 +13,8 @@ import { MATCH, RECORD } from './constants';
 let snapshotOptions = {};
 let snapshotResults = {};
 let snapshotRunning = false;
-const kebabSnap = '-new-snap.png';
+const kebabSnap = '-snap.png';
+const kebabSnapFail = '-snap-FAIL.png';
 const dotSnap = '.snap.png';
 const dotDiff = '.diff.png';
 
@@ -60,6 +61,10 @@ export function matchImageSnapshotPlugin({ path: screenshotPath }) {
     snapshotsDir,
     `${snapshotIdentifier}${kebabSnap}`
   );
+  const snapshotKebabPathFail = path.join(
+    snapshotsDir,
+    `${snapshotIdentifier}${kebabSnapFail}`
+  );
   const snapshotDotPath = path.join(
     snapshotsDir,
     `${snapshotIdentifier}${dotSnap}`
@@ -89,7 +94,8 @@ export function matchImageSnapshotPlugin({ path: screenshotPath }) {
   if (!pass && !added && !updated) {
     fs.copySync(diffOutputPath, diffDotPath);
     fs.removeSync(diffOutputPath);
-    // fs.removeSync(snapshotKebabPath);
+    fs.copySync(snapshotKebabPath, snapshotKebabPathFail);
+    fs.removeSync(snapshotKebabPath);
     snapshotResults.diffOutputPath = diffDotPath;
 
     console.log(
@@ -102,7 +108,7 @@ export function matchImageSnapshotPlugin({ path: screenshotPath }) {
   }
 
   fs.copySync(snapshotKebabPath, snapshotDotPath);
-  // fs.removeSync(snapshotKebabPath);
+  fs.removeSync(snapshotKebabPath);
   snapshotResults.diffOutputPath = snapshotDotPath;
 
   return {

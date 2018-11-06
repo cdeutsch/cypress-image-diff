@@ -94,8 +94,8 @@ export function matchImageSnapshotPlugin({ path: screenshotPath }) {
   if (!pass && !added && !updated) {
     fs.copySync(diffOutputPath, diffDotPath);
     fs.removeSync(diffOutputPath);
-    fs.copySync(snapshotKebabPath, snapshotKebabPathFail);
     fs.removeSync(snapshotKebabPath);
+    fs.writeFileSync(snapshotKebabPathFail, receivedImageBuffer)
     snapshotResults.diffOutputPath = diffDotPath;
 
     console.log(

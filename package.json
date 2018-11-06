@@ -1,6 +1,6 @@
 {
   "name": "cypress-image-diff",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Cypress bindings for jest-image-snapshot. (fork of cypress-image-snapshot)",
   "repository": "https://github.com/cdeutsch/cypress-image-diff",
   "author": "Christopher Deutsch <cd@cdeutsch.com>",

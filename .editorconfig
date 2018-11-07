@@ -1,0 +1,18 @@
+# http://editorconfig.org
+
+# top-most EditorConfig file
+root = true
+
+# Newline ending every file
+[*]
+insert_final_newline = true
+
+# 2 space indentation
+[*.{js,jsx,json,ts,tsx}]
+indent_style = space
+indent_size = 2
+
+# 2 space indentation
+[*.{css,less}]
+indent_style = space
+indent_size = 2

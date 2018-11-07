@@ -95,11 +95,14 @@ export function matchImageSnapshotPlugin({ path: screenshotPath }) {
     fs.copySync(diffOutputPath, diffDotPath);
     fs.removeSync(diffOutputPath);
     fs.removeSync(snapshotKebabPath);
-    fs.writeFileSync(snapshotKebabPathFail, receivedImageBuffer)
+    fs.writeFileSync(snapshotKebabPathFail, receivedImageBuffer);
     snapshotResults.diffOutputPath = diffDotPath;
 
+    // eslint-disable-next-line no-console
     console.log(
-      `Screenshot was different from saved snapshot.\n  See diff for details: ${snapshotResults.diffOutputPath}`
+      `Screenshot was different from saved snapshot.\n  See diff for details: ${
+        snapshotResults.diffOutputPath
+      }`
     );
 
     return {
